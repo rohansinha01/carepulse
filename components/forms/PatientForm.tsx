@@ -28,6 +28,7 @@ import SubmitButton from "../SubmitButton"
 import { useState } from "react"
 import { UserFormValidation } from "@/lib/validation"
 import { useRouter } from "next/navigation"
+import { createUser } from "@/lib/actions/patient.actions"
 export enum FormFieldType {
     INPUT = 'input',
     TEXTAREA = 'textarea',
@@ -59,23 +60,27 @@ const  PatientForm = () => {
  
   // 2. Define a submit handler.
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  async function onSubmit({name, email, phone }: z.infer<typeof UserFormValidation>) {
-    setIsLoading(true)
+  const onSubmit = async (values: z.infer<typeof UserFormValidation>) => {
+    setIsLoading(true);
 
     try {
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        const userData  = {
-            name,
-            email,
-            phone
-        }
-        // const user = await createUser(userData);
+      const user = {
+        name: values.name,
+        email: values.email,
+        phone: values.phone,
+      };
 
-        // if(user) router.push(`/patients/${user.$id}/register`)
+      const newUser = await createUser(user);
+
+      if (newUser) {
+        router.push(`/patients/${newUser.$id}/register`);
+      }
     } catch (error) {
-        console.log(error)
+      console.log(error);
     }
-  }
+
+    setIsLoading(false);
+  };
   return (
         <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 flex-1">

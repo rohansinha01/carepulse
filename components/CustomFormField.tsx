@@ -5,7 +5,6 @@ import { Control } from "react-hook-form";
 import {
     FormControl,
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    FormDescription,
     FormField,
     FormItem,
     FormLabel,
@@ -19,6 +18,8 @@ import PhoneInput from 'react-phone-number-input'
 import { E164Number } from "libphonenumber-js/core";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { Select, SelectContent, SelectTrigger, SelectValue } from '@radix-ui/react-select';
+
 
 
   interface CustomProps {
@@ -40,7 +41,8 @@ import "react-datepicker/dist/react-datepicker.css";
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars
   const RenderField = ({field, props}: { field: any; props: CustomProps }) => {
-    const { fieldType, iconSrc, iconAlt, placeholder, showTimeSelect, dateFormat } = props
+    const { fieldType, iconSrc, iconAlt, placeholder, showTimeSelect, dateFormat, renderSkeleton } = props;
+
     switch (fieldType) {
         case FormFieldType.INPUT:
             return (
@@ -95,19 +97,36 @@ import "react-datepicker/dist/react-datepicker.css";
                         showTimeSelect={showTimeSelect ?? false} 
                         timeInputLabel="Time:"
                         wrapperClassName='date-picker'
-                        
                         />
-
                     </FormControl>
                 </div>
-            )
+            );
+        // case FormFieldType.SELECT:
+            return (
+                <FormControl>
+                    <Select onValueChange={field.onChange} defaultValue={field.value}>
+                        <FormControl>
+                            <SelectTrigger className='shad-select-trigger'>
+                                <SelectValue placeholder={props.placeholder} />
+                            </SelectTrigger>
+                        </FormControl>
+                   
+                
+                <SelectContent className='shad-select-content'>
+                    {props.children}
+                </SelectContent> 
+                </Select>
+            </FormControl>
+            );
+        case FormFieldType.SKELETON:
+            return renderSkeleton ? renderSkeleton(field) : null;
         default:
-            break;
+            break
     }
   }
 
 const CustomFormField = (props: CustomProps) => {
-    const { control, fieldType, name, label } = props;
+    const { control, name, label } = props;
   return (
     <FormField
             control={control}
@@ -115,8 +134,8 @@ const CustomFormField = (props: CustomProps) => {
             // eslint-disable-next-line @typescript-eslint/no-unused-vars
             render={({ field }) => (
                 <FormItem className='flex-1'>
-                    {fieldType !== FormFieldType.CHECKBOX && label && (
-                        <FormLabel>{label}</FormLabel>
+                    {props.fieldType !== FormFieldType.CHECKBOX && label && (
+                        <FormLabel className='shad-input-label'>{label}</FormLabel>
                     )}
 
                     <RenderField field={field} props={props}/>

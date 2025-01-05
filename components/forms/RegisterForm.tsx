@@ -32,7 +32,7 @@ import { useRouter } from "next/navigation"
 import { createUser } from "@/lib/actions/patient.actions"
 import { FormFieldType } from "./PatientForm"
 import { RadioGroup, RadioGroupItem } from "../ui/radio-group"
-import { Doctors, GenderOptions } from "@/constants"
+import { Doctors, GenderOptions, IdentificationTypes } from "@/constants"
 import { Label } from "@radix-ui/react-label"
 import { SelectItem } from "../ui/select"
 import Image from "next/image"
@@ -295,15 +295,46 @@ const  RegisterForm = ({ user }: {user: User }) => {
                Identification and Verification
             </h2>  
             </div>
-            
+        
 
         </section>
 
-        
-
-        <div className="flex flex-col gap-6 xl:flex-row">
+        <CustomFormField 
+            fieldType={FormFieldType.SELECT}
+            control={form.control}
+            name="identificationType"
+            label="Identification Type"
+            placeholder="Select an identification type"
+            >
+                {IdentificationTypes.map((type) => (
+                    <SelectItem key={type} value={type}>
+                        {type}
+                    </SelectItem>
+                ))}
+            </CustomFormField>    
             
-        </div>
+            <CustomFormField 
+            fieldType={FormFieldType.INPUT}
+            control={form.control}
+            name="identificationNumber"
+            label="Identification Number"
+            placeholder="ABC123456789"
+            />
+
+        <CustomFormField 
+            fieldType={FormFieldType.SKELETON}
+            control={form.control}
+            name="identificationDocument"
+            label="Scanned copy of Identification Document"
+            renderSkeleton={(field) => (
+                <FormControl>
+                    FileUpload
+                </FormControl>
+            )}
+            />
+     
+
+
         <SubmitButton isLoading={isLoading}>Get Started</SubmitButton>
         </form>
     </Form>

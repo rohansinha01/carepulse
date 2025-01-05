@@ -18,7 +18,7 @@ import PhoneInput from 'react-phone-number-input'
 import { E164Number } from "libphonenumber-js/core";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { Select, SelectContent, SelectTrigger, SelectValue } from '@radix-ui/react-select';
+import { Select, SelectContent, SelectTrigger, SelectValue } from "./ui/select";
 
 
 
@@ -81,6 +81,7 @@ import { Select, SelectContent, SelectTrigger, SelectValue } from '@radix-ui/rea
                 </FormControl>
             )
         case FormFieldType.DATE_PICKER:
+        
             return (
                 <div className='flex rounded-md border border-dark-500 bg-dark-400'>
                     <Image 
@@ -118,6 +119,25 @@ import { Select, SelectContent, SelectTrigger, SelectValue } from '@radix-ui/rea
                 </Select>
             </FormControl>
             );
+        
+        case FormFieldType.SELECT:
+            return (
+                <FormControl>
+                    <Select onValueChange={field.onChange}
+                    defaultValue={field.value}>
+                        <FormControl>
+                            <SelectTrigger className='shad-select-trigger'>
+                            <SelectValue placeholder={placeholder}/> 
+                            </SelectTrigger>
+                            
+                        </FormControl>
+                        <SelectContent className='shad-select-content'>
+                            {props.children}
+                        </SelectContent>
+                    </Select>
+                </FormControl>
+            )
+        
         case FormFieldType.SKELETON:
             return renderSkeleton ? renderSkeleton(field) : null;
         default:

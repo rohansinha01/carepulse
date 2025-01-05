@@ -231,7 +231,23 @@ const  RegisterForm = ({ user }: {user: User }) => {
             </CustomFormField>
 
         <div className="flex flex-col gap-6 xl:flex-row">
-            
+        <CustomFormField 
+            fieldType={FormFieldType.INPUT}
+            control={form.control}
+            name="insuranceProvider"
+            label="Insurance Provider"
+            placeholder="BCBS"
+
+            />
+
+        <CustomFormField 
+            fieldType={FormFieldType.INPUT}
+            control={form.control}
+            name="insurancePolicyNumber"
+            label="Insurance policy Number"
+            placeholder="ABC123456789"
+
+            />
         </div>
         <div className="flex flex-col gap-6 xl:flex-row">
             

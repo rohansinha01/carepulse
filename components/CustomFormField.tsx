@@ -40,7 +40,7 @@ import "react-datepicker/dist/react-datepicker.css";
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars
   const RenderField = ({field, props}: { field: any; props: CustomProps }) => {
-    const { fieldType, iconSrc, iconAlt, placeholder, } = props
+    const { fieldType, iconSrc, iconAlt, placeholder, showTimeSelect, dateFormat } = props
     switch (fieldType) {
         case FormFieldType.INPUT:
             return (
@@ -89,7 +89,14 @@ import "react-datepicker/dist/react-datepicker.css";
                     className='ml-2'
                     />
                     <FormControl>
-                    <DatePicker selected={field.value} onChange={(date) => field.onChange(date)} />
+                    <DatePicker selected={field.value} onChange={(date) => 
+                        field.onChange(date)} 
+                        dateFormat={dateFormat ?? 'MM/dd/yyyy'} 
+                        showTimeSelect={showTimeSelect ?? false} 
+                        timeInputLabel="Time:"
+                        wrapperClassName='date-picker'
+                        
+                        />
 
                     </FormControl>
                 </div>

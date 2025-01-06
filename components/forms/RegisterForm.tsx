@@ -36,6 +36,7 @@ import { Doctors, GenderOptions, IdentificationTypes } from "@/constants"
 import { Label } from "@radix-ui/react-label"
 import { SelectItem } from "../ui/select"
 import Image from "next/image"
+import FileUploader from "../FileUploader"
  
 
 const  RegisterForm = ({ user }: {user: User }) => {
@@ -328,7 +329,7 @@ const  RegisterForm = ({ user }: {user: User }) => {
             label="Scanned copy of Identification Document"
             renderSkeleton={(field) => (
                 <FormControl>
-                    FileUpload
+                    <FileUploader />
                 </FormControl>
             )}
             />

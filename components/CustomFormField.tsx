@@ -153,7 +153,9 @@ import { Textarea } from './ui/textarea';
         
         case FormFieldType.SKELETON:
             return renderSkeleton ? renderSkeleton(field) : null;
-        default:
+        
+        
+            default:
             break
     }
   }

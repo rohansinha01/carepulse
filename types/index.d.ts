@@ -18,7 +18,7 @@ declare type SearchParamProps = {
   }
   
   declare interface RegisterUserParams extends CreateUserParams {
-    userId: string;
+    registerId: string;
     birthDate: Date;
     gender: Gender;
     address: string;
@@ -39,7 +39,7 @@ declare type SearchParamProps = {
   }
   
   declare type CreateAppointmentParams = {
-    userId: string;
+    registerId: string;
     patient: string;
     primaryPhysician: string;
     reason: string;
@@ -50,7 +50,7 @@ declare type SearchParamProps = {
   
   declare type UpdateAppointmentParams = {
     appointmentId: string;
-    userId: string;
+    registerId: string;
     appointment: Appointment;
     type: string;
   };

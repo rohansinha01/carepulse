@@ -1,9 +1,13 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import AppointmentForm from "@/components/forms/AppointmentForm";
+import { getPatient } from "@/lib/actions/patient.actions";
 import Image from "next/image"
 // import Link from "next/link";
 
 
-export default function NewAppointment() {
+export default async function Appointment({params: { registerId }}: SearchParamProps) {
+
+    const patient = await getPatient(registerId)
   return (
     <div className="flex h-screen max-h-screen">
       <section className="remove-scrollbar container my-auto">
@@ -15,7 +19,11 @@ export default function NewAppointment() {
           alt={"patient"} 
           className="mb-12 h-10 w-fit"/>
 
-          <AppointmentForm />
+          <AppointmentForm 
+            registerId={registerId}
+            patientId={patient?.$id}
+            type="create"
+            />
 
        
           <p className="justify-items-end texxt-dark-600 xl:text-left">

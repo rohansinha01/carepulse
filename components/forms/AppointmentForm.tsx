@@ -31,6 +31,9 @@ import { UserFormValidation } from "@/lib/validation"
 import { useRouter } from "next/navigation"
 import { createUser } from "@/lib/actions/patient.actions"
 import { FormFieldType } from "./PatientForm"
+import { Doctors } from "@/constants"
+import { SelectItem } from "@radix-ui/react-select"
+import Image from "next/image";
  
 
  
@@ -87,34 +90,36 @@ const  AppointmentForm = ({
                 <p className="text-dark-700">Request a new Appointment in 10 seconds</p>
             </section>
 
-        <CustomFormField 
-            fieldType={FormFieldType.INPUT}
+          {type !== "cancel" && (
+            <>
+              <CustomFormField
+            fieldType={FormFieldType.SELECT}
             control={form.control}
-            name="name"
-            label="Full Name"
-            placeholder="John Doe"
-            iconSrc="assets/icons/user.svg"
-            iconAlt="user"
-            />
+            name="primaryPhysician"
+            label="Doctor"
+            placeholder="Select a doctor"
+          >
+            {Doctors.map((doctor, i) => (
+              <SelectItem key={doctor.name + i} value={doctor.name}>
+                <div className="flex cursor-pointer items-center gap-2">
+                  <Image
+                    src={doctor.image}
+                    width={32}
+                    height={32}
+                    alt="doctor"
+                    className="rounded-full border border-dark-500"
+                  />
+                  <p>{doctor.name}</p>
+                </div>
+              </SelectItem>
+            ))}
+          </CustomFormField>
 
-        <CustomFormField 
-            fieldType={FormFieldType.INPUT}
-            control={form.control}
-            name="email"
-            label="Email"
-            placeholder="JohnDoe@email.com"
-            iconSrc="assets/icons/email.svg"
-            iconAlt="email"
-            />
+          
+            </>
+          )}
 
-        <CustomFormField 
-            fieldType={FormFieldType.PHONE_INPUT}
-            control={form.control}
-            name="phone"
-            label="Phone Number"
-            placeholder="(555) 123 4567"
-            />
-
+        
         
         <SubmitButton isLoading={isLoading}>Get Started</SubmitButton>
         </form>

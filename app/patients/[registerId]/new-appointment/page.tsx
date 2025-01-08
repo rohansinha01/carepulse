@@ -1,6 +1,6 @@
-import PatientForm from "@/components/forms/PatientForm";
+import AppointmentForm from "@/components/forms/AppointmentForm";
 import Image from "next/image"
-import Link from "next/link";
+// import Link from "next/link";
 
 
 export default function NewAppointment() {
@@ -15,7 +15,7 @@ export default function NewAppointment() {
           alt={"patient"} 
           className="mb-12 h-10 w-fit"/>
 
-          {/* <PatientForm /> */}
+          <AppointmentForm />
 
        
           <p className="justify-items-end texxt-dark-600 xl:text-left">

@@ -26,7 +26,7 @@ import {
 import { Input } from "@/components/ui/input"
 import CustomFormField from "../CustomFormField"
 import SubmitButton from "../SubmitButton"
-import { useState } from "react"
+import { Dispatch, SetStateAction, useState } from "react"
 import { UserFormValidation } from "@/lib/validation"
 import { useRouter } from "next/navigation"
 import { createUser } from "@/lib/actions/patient.actions"
@@ -35,15 +35,22 @@ import { Doctors } from "@/constants"
 import { SelectItem } from "@radix-ui/react-select"
 import Image from "next/image";
 import "react-datepicker/dist/react-datepicker.css";
+import { Appointment } from "@/types/appwrite.types"
  
 
  
-const  AppointmentForm = ({
-  registerId, patientId, type
+export const AppointmentForm = ({
+  registerId,
+  patientId,
+  type = "create",
+  appointment,
+  setOpen,
 }: {
   registerId: string;
   patientId: string;
-  type: "create" | "cancel";
+  type: "create" | "schedule" | "cancel";
+  appointment?: Appointment;
+  setOpen?: Dispatch<SetStateAction<boolean>>;
 }) => {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const router = useRouter()
@@ -124,6 +131,27 @@ const  AppointmentForm = ({
               showTimeSelect
               dateFormat="MM/dd/yyyy  -  h:mm aa"
             />
+            <div
+              className={`flex flex-col gap-6  ${type === "create" && "xl:flex-row"}`}
+            >
+              <CustomFormField
+                fieldType={FormFieldType.TEXTAREA}
+                control={form.control}
+                name="reason"
+                label="Appointment reason"
+                placeholder="Annual montly check-up"
+                disabled={type === "schedule"}
+              />
+
+              <CustomFormField
+                fieldType={FormFieldType.TEXTAREA}
+                control={form.control}
+                name="note"
+                label="Comments/notes"
+                placeholder="Prefer afternoon appointments, if possible"
+                disabled={type === "schedule"}
+              />
+            </div>
             </>
           )}
 

@@ -1,50 +1,36 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-"use client"
- 
-import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm } from "react-hook-form"
-import { z } from "zod"
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { Button } from "@/components/ui/button"
-import {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  Form,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  FormControl,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  FormDescription,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  FormField,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  FormItem,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  FormLabel,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  FormMessage,
-} from "@/components/ui/form"
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { Input } from "@/components/ui/input"
-import CustomFormField from "../CustomFormField"
-import SubmitButton from "../SubmitButton"
-import { Dispatch, SetStateAction, useState } from "react"
-import { UserFormValidation } from "@/lib/validation"
-import { useRouter } from "next/navigation"
-import { createUser } from "@/lib/actions/patient.actions"
-import { FormFieldType } from "./PatientForm"
-import { Doctors } from "@/constants"
-import { SelectItem } from "@radix-ui/react-select"
-import Image from "next/image";
-import "react-datepicker/dist/react-datepicker.css";
-import { Appointment } from "@/types/appwrite.types"
- 
+/* eslint-disable @typescript-eslint/no-unused-expressions */
+/* eslint-disable @typescript-eslint/no-non-null-asserted-optional-chain */
+"use client";
 
- 
+import { zodResolver } from "@hookform/resolvers/zod";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { Dispatch, SetStateAction, useState } from "react";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+
+import { SelectItem } from "@/components/ui/select";
+import { Doctors } from "@/constants";
+// import {
+//   createAppointment,
+//   updateAppointment,
+// } from "@/lib/actions/appointment.actions";
+import { getAppointmentSchema } from "@/lib/validation";
+import { Appointment } from "@/types/appwrite.types";
+
+import "react-datepicker/dist/react-datepicker.css";
+
+import CustomFormField, { FormFieldType } from "../CustomFormField";
+import SubmitButton from "../SubmitButton";
+import { Form } from "../ui/form";
+import { createAppointment } from "@/lib/actions/appointment.actions";
+
 export const AppointmentForm = ({
   registerId,
   patientId,
   type = "create",
   appointment,
-  setOpen,
+  // setOpen,
 }: {
   registerId: string;
   patientId: string;
@@ -52,54 +38,113 @@ export const AppointmentForm = ({
   appointment?: Appointment;
   setOpen?: Dispatch<SetStateAction<boolean>>;
 }) => {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const router = useRouter()
- // eslint-disable-next-line @typescript-eslint/no-unused-vars
- const [isLoading, setIsLoading] = useState(false)
-  // 1. Define your form.
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const form = useForm<z.infer<typeof UserFormValidation>>({
-    resolver: zodResolver(UserFormValidation),
+  const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
+
+  const AppointmentFormValidation = getAppointmentSchema(type);
+
+  const form = useForm<z.infer<typeof AppointmentFormValidation>>({
+    resolver: zodResolver(AppointmentFormValidation),
     defaultValues: {
-      name: "",
-      email: "",
-      phone: ""
+      primaryPhysician: appointment ? appointment?.primaryPhysician : "",
+      schedule: appointment
+        ? new Date(appointment?.schedule!)
+        : new Date(Date.now()),
+      reason: appointment ? appointment.reason : "",
+      note: appointment?.note || "",
+      cancellationReason: appointment?.cancellationReason || "",
     },
-  })
- 
-  // 2. Define a submit handler.
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const onSubmit = async (values: z.infer<typeof UserFormValidation>) => {
+  });
+
+  const onSubmit = async (
+    values: z.infer<typeof AppointmentFormValidation>
+  ) => {
     setIsLoading(true);
 
+    let status;
+    switch (type) {
+      case "schedule":
+        status = "scheduled";
+        break;
+      case "cancel":
+        status = "cancelled";
+        break;
+      default:
+        status = "pending";
+    }
+
     try {
-      const user = {
-        name: values.name,
-        email: values.email,
-        phone: values.phone,
-      };
+      if (type === "create" && patientId) {
+        const appointment = {
+          registerId,
+          patient: patientId,
+          primaryPhysician: values.primaryPhysician,
+          schedule: new Date(values.schedule),
+          reason: values.reason!,
+          status: status as Status,
+          note: values.note,
+        };
 
-      const newUser = await createUser(user);
+        const newAppointment = await createAppointment(appointment);
 
-      if (newUser) {
-        router.push(`/patients/${newUser.$id}/register`);
+        if (newAppointment) {
+          form.reset();
+          router.push(
+            `/patients/${registerId}/new-appointment/success?appointmentId=${newAppointment.$id}`
+          );
+        }
+      } else {
+        // const appointmentToUpdate = {
+        //   registerId,
+        //   appointmentId: appointment?.$id!,
+        //   appointment: {
+        //     primaryPhysician: values.primaryPhysician,
+        //     schedule: new Date(values.schedule),
+        //     status: status as Status,
+        //     cancellationReason: values.cancellationReason,
+        //   },
+        //   type,
+        // };
+
+        // const updatedAppointment = await updatedAppointment(appointmentToUpdate);
+
+        // if (updatedAppointment) {
+        //   setOpen && setOpen(false);
+        //   form.reset();
+        // }
       }
     } catch (error) {
       console.log(error);
     }
-
     setIsLoading(false);
   };
-  return (
-        <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 flex-1">
-            <section className="mb-12 space-y-4">
-                <h1 className="header">New Appointment</h1>
-                <p className="text-dark-700">Request a new Appointment in 10 seconds</p>
-            </section>
 
-          {type !== "cancel" && (
-            <>
+  let buttonLabel;
+  switch (type) {
+    case "cancel":
+      buttonLabel = "Cancel Appointment";
+      break;
+    case "schedule":
+      buttonLabel = "Schedule Appointment";
+      break;
+    default:
+      buttonLabel = "Submit Apppointment";
+  }
+
+  return (
+    <Form {...form}>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="flex-1 space-y-6">
+        {type === "create" && (
+          <section className="mb-12 space-y-4">
+            <h1 className="header">New Appointment</h1>
+            <p className="text-dark-700">
+              Request a new appointment in 10 seconds.
+            </p>
+          </section>
+        )}
+
+        {type !== "cancel" && (
+          <>
             <CustomFormField
               fieldType={FormFieldType.SELECT}
               control={form.control}
@@ -123,7 +168,7 @@ export const AppointmentForm = ({
               ))}
             </CustomFormField>
 
-          <CustomFormField
+            <CustomFormField
               fieldType={FormFieldType.DATE_PICKER}
               control={form.control}
               name="schedule"
@@ -131,6 +176,7 @@ export const AppointmentForm = ({
               showTimeSelect
               dateFormat="MM/dd/yyyy  -  h:mm aa"
             />
+
             <div
               className={`flex flex-col gap-6  ${type === "create" && "xl:flex-row"}`}
             >
@@ -152,15 +198,26 @@ export const AppointmentForm = ({
                 disabled={type === "schedule"}
               />
             </div>
-            </>
-          )}
+          </>
+        )}
 
-        
-        
-        <SubmitButton isLoading={isLoading}>Get Started</SubmitButton>
-        </form>
+        {type === "cancel" && (
+          <CustomFormField
+            fieldType={FormFieldType.TEXTAREA}
+            control={form.control}
+            name="cancellationReason"
+            label="Reason for cancellation"
+            placeholder="Urgent meeting came up"
+          />
+        )}
+
+        <SubmitButton
+          isLoading={isLoading}
+          className={`${type === "cancel" ? "shad-danger-btn" : "shad-primary-btn"} w-full`}
+        >
+          {buttonLabel}
+        </SubmitButton>
+      </form>
     </Form>
-  )
-}
-
-export default AppointmentForm
+  );
+};

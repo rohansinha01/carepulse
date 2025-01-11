@@ -172,7 +172,7 @@ export const AppointmentForm = ({
               fieldType={FormFieldType.DATE_PICKER}
               control={form.control}
               name="schedule"
-              label="Expected appointment date"
+              label="Expected appointment date - note that this appointment is not confirmed until doctor sends text"
               showTimeSelect
               dateFormat="MM/dd/yyyy  -  h:mm aa"
             />
@@ -207,7 +207,7 @@ export const AppointmentForm = ({
             control={form.control}
             name="cancellationReason"
             label="Reason for cancellation"
-            placeholder="Urgent meeting came up"
+            placeholder="Enter reason for cancellation"
           />
         )}
 

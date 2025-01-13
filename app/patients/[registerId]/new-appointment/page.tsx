@@ -34,7 +34,7 @@ const Appointment = async (props: SearchParamProps) => {
           />
 
      
-        <p className="justify-items-end texxt-dark-600 xl:text-left">
+        <p className="copyright mt-10 py-12">
           © 2025 CarePulse
           </p>
         </div>

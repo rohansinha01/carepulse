@@ -75,7 +75,7 @@ export const AppointmentForm = ({
 
     try {
       if (type === "create" && patientId) {
-        const appointment = {
+        const appointmentData = {
           registerId,
           patient: patientId,
           primaryPhysician: values.primaryPhysician,
@@ -85,7 +85,7 @@ export const AppointmentForm = ({
           note: values.note,
         };
 
-        const newAppointment = await createAppointment(appointment);
+        const newAppointment = await createAppointment(appointmentData);
 
         if (newAppointment) {
           form.reset();

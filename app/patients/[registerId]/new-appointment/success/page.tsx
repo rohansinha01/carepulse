@@ -21,10 +21,20 @@ const Success = () => {
                 width={280}
                 alt="success"
             />
-            </section>
+
             <h2 className='header mb-6 max-w-[600px] text-center'>
                 Your <span className='text-green-500'>appointment request</span> has successfully submitted
             </h2>
+            <p>We'll be in touch shortly to confirm</p>
+            </section>
+            <section className='request-details'>
+                <p>Requested appointment details</p>
+                <div>
+                    {/* <Image 
+
+                    /> */}
+                </div>
+            </section>
             
         </div>
     </div>

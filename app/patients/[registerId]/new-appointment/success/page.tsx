@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-asserted-optional-chain */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Doctors } from '@/constants';
 import { getAppointment } from '@/lib/actions/appointment.actions';
@@ -37,9 +38,13 @@ const Success = async ({ params: { registerId}, searchParams}: SearchParamProps)
             <section className='request-details'>
                 <p>Requested appointment details</p>
                 <div>
-                    {/* <Image 
-
-                    /> */}
+                <Image
+              src={doctor?.image!}
+              alt="doctor"
+              width={100}
+              height={100}
+              className="size-6"
+            />
                 </div>
             </section>
             

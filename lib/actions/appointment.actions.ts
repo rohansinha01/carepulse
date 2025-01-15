@@ -33,6 +33,20 @@ export const createAppointment = async (
   }
 };
 
+export const getAppointment = async (appointmentId: string) => {
+  try {
+    const appointment = await databases.getDocument(
+      DATABASE_ID!,
+      APPOINTMENT_COLLECTION_ID!,
+      appointmentId,
+    )
+
+    return parseStringify(appointment);
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 //  GET RECENT APPOINTMENTS
 export const getRecentAppointmentList = async () => {
   try {
@@ -146,20 +160,3 @@ export const sendSMSNotification = async (userId: string, content: string) => {
 //   }
 // };
 
-// GET APPOINTMENT
-export const getAppointment = async (appointmentId: string) => {
-  try {
-    const appointment = await databases.getDocument(
-      DATABASE_ID!,
-      APPOINTMENT_COLLECTION_ID!,
-      appointmentId
-    );
-
-    return parseStringify(appointment);
-  } catch (error) {
-    console.error(
-      "An error occurred while retrieving the existing patient:",
-      error
-    );
-  }
-};

@@ -2,6 +2,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Doctors } from '@/constants';
 import { getAppointment } from '@/lib/actions/appointment.actions';
+import { formatDateTime } from '@/lib/utils';
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
@@ -45,8 +46,22 @@ const Success = async ({ params: { registerId}, searchParams}: SearchParamProps)
               height={100}
               className="size-6"
             />
+            <p className='whitespace-nowrap'>
+                Dr. {doctor?.name}
+            </p>
+                </div>
+                <div>
+                    <Image 
+                        src='/assets/icons/calendar.svg'
+                        height={24}
+                        width={24}
+                        alt="calendar"
+                    />
+                    <p>{formatDateTime(appointment.schedule).dateTime}</p>
                 </div>
             </section>
+            
+
             
         </div>
     </div>

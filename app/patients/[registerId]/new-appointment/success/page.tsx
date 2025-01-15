@@ -14,6 +14,18 @@ const Success = () => {
                   alt='logo'
                   className='h-10 w-fit'  />
             </Link>
+            <section className='flex flex-col items-center'>
+            <Image
+                src="/assets/gifs/success.gif"
+                height={300}
+                width={280}
+                alt="success"
+            />
+            </section>
+            <h2 className='header mb-6 max-w-[600px] text-center'>
+                Your <span className='text-green-500'>appointment request</span> has successfully submitted
+            </h2>
+            
         </div>
     </div>
   )

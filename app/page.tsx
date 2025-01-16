@@ -1,20 +1,15 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import PatientForm from "@/components/forms/PatientForm";
+import PasskeyModal from "@/components/PasskeyModal";
 
 import Image from "next/image"
 import Link from "next/link";
-import dynamic from "next/dynamic";
 
-
- 
-
-
-
-
-export default function Home() {
+export default function Home({ searchParams}: SearchParamProps) {
+  const isAdmin = searchParams.admin === 'true'
   return (
     <span className="flex h-screen max-h-screen">
-      {/* TODO: OTP VERIFICATION | PASSKEYMODAL */}
+      {isAdmin && <PasskeyModal />}
       <section className="remove-scrollbar container my-auto">
         <div className="sub-container max-w-[496px]">
           <Image 

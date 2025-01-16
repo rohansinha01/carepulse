@@ -63,8 +63,12 @@ const Success = async ({ params: { registerId}, searchParams}: SearchParamProps)
             </section>
             
             <Button variant="outline" className='shad-primary-btn' asChild>
-               
+            <Link href={`/patients/${registerId}/new-appointment`}>
+                New Appointment
+            </Link>
             </Button>
+
+            
 
         </div>
     </div>

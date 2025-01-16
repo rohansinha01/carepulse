@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-non-null-asserted-optional-chain */
 /* eslint-disable @typescript-eslint/no-unused-vars */
+import { Button } from '@/components/ui/button';
 import { Doctors } from '@/constants';
 import { getAppointment } from '@/lib/actions/appointment.actions';
 import { formatDateTime } from '@/lib/utils';
@@ -61,8 +62,10 @@ const Success = async ({ params: { registerId}, searchParams}: SearchParamProps)
                 </div>
             </section>
             
+            <Button variant="outline" className='shad-primary-btn' asChild>
+               
+            </Button>
 
-            
         </div>
     </div>
   )

@@ -1,4 +1,6 @@
-import React from 'react'
+'use client'
+
+import React, { useState } from 'react'
 import {
     AlertDialog,
     AlertDialogAction,
@@ -8,17 +10,18 @@ import {
     AlertDialogFooter,
     AlertDialogHeader,
     AlertDialogTitle,
-    AlertDialogTrigger,
   } from "@/components/ui/alert-dialog"
   
 
 const PasskeyModal = () => {
+
+    const [open, setOpen] = useState(true)
     return (
-        <AlertDialog>
-        <AlertDialogTrigger>Open</AlertDialogTrigger>
-        <AlertDialogContent>
+        <AlertDialog open={open} onOpenChange={setOpen}>
+        
+        <AlertDialogContent className='shad-alert-dialog'>
         <AlertDialogHeader>
-            <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+            <AlertDialogTitle className='flex items-start justify-between'>Admin Access Verification</AlertDialogTitle>
             <AlertDialogDescription>
             This action cannot be undone. This will permanently delete your account
             and remove your data from our servers.

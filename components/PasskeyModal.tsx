@@ -37,10 +37,12 @@ const PasskeyModal = () => {
                 className='cursor-pointer'
                 />
             <AlertDialogDescription>
-            This action cannot be undone. This will permanently delete your account
-            and remove your data from our servers.
+            To access the admin page, please enter the passkey
             </AlertDialogDescription>
         </AlertDialogHeader>
+        <div>
+            
+        </div>
         <AlertDialogFooter>
             <AlertDialogCancel>Cancel</AlertDialogCancel>
             <AlertDialogAction>Continue</AlertDialogAction>

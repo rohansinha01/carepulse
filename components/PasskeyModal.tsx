@@ -51,12 +51,12 @@ const PasskeyModal = () => {
         <div>
                 <InputOTP maxLength={6} value={passkey} onChange={(value) => setPasskey(value)}>
         <InputOTPGroup className='shad-otp'>
-            <InputOTPSlot index={0} />
-            <InputOTPSlot index={1} />
-            <InputOTPSlot index={2} />
-            <InputOTPSlot index={3} />
-            <InputOTPSlot index={4} />
-            <InputOTPSlot index={5} />
+            <InputOTPSlot className='shad-otp-slot' index={0} />
+            <InputOTPSlot className='shad-otp-slot' index={1} />
+            <InputOTPSlot className='shad-otp-slot' index={2} />
+            <InputOTPSlot className='shad-otp-slot' index={3} />
+            <InputOTPSlot className='shad-otp-slot' index={4} />
+            <InputOTPSlot className='shad-otp-slot' index={5} />
         </InputOTPGroup>
         </InputOTP>
 

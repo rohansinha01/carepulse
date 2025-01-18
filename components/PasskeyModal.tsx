@@ -24,6 +24,7 @@ import {
 const PasskeyModal = () => {
     const router = useRouter()
     const [open, setOpen] = useState(true)
+    const [passkey, setPasskey] = useState('')
 
     const closeModal = () => {
         setOpen(false)
@@ -49,7 +50,7 @@ const PasskeyModal = () => {
             </AlertDialogDescription>
         </AlertDialogHeader>
         <div>
-                <InputOTP maxLength={6}>
+                <InputOTP maxLength={6} value={passkey} onChange={(value) => setPasskey(value)}>
         <InputOTPGroup>
             <InputOTPSlot index={0} />
             <InputOTPSlot index={1} />

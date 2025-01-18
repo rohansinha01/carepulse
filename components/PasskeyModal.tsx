@@ -13,6 +13,14 @@ import {
   } from "@/components/ui/alert-dialog"
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
+import {
+    InputOTP,
+    InputOTPGroup,
+    InputOTPSeparator,
+    InputOTPSlot,
+  } from "@/components/ui/input-otp"
+  
+
 const PasskeyModal = () => {
     const router = useRouter()
     const [open, setOpen] = useState(true)
@@ -41,7 +49,20 @@ const PasskeyModal = () => {
             </AlertDialogDescription>
         </AlertDialogHeader>
         <div>
-            
+                <InputOTP maxLength={6}>
+        <InputOTPGroup>
+            <InputOTPSlot index={0} />
+            <InputOTPSlot index={1} />
+            <InputOTPSlot index={2} />
+        </InputOTPGroup>
+        <InputOTPSeparator />
+        <InputOTPGroup>
+            <InputOTPSlot index={3} />
+            <InputOTPSlot index={4} />
+            <InputOTPSlot index={5} />
+        </InputOTPGroup>
+        </InputOTP>
+
         </div>
         <AlertDialogFooter>
             <AlertDialogCancel>Cancel</AlertDialogCancel>

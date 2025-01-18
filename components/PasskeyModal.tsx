@@ -16,7 +16,6 @@ import { useRouter } from 'next/navigation'
 import {
     InputOTP,
     InputOTPGroup,
-    InputOTPSeparator,
     InputOTPSlot,
   } from "@/components/ui/input-otp"
   
@@ -51,13 +50,10 @@ const PasskeyModal = () => {
         </AlertDialogHeader>
         <div>
                 <InputOTP maxLength={6} value={passkey} onChange={(value) => setPasskey(value)}>
-        <InputOTPGroup>
+        <InputOTPGroup className='shad-otp'>
             <InputOTPSlot index={0} />
             <InputOTPSlot index={1} />
             <InputOTPSlot index={2} />
-        </InputOTPGroup>
-        <InputOTPSeparator />
-        <InputOTPGroup>
             <InputOTPSlot index={3} />
             <InputOTPSlot index={4} />
             <InputOTPSlot index={5} />

@@ -19,6 +19,7 @@ import {
     InputOTPGroup,
     InputOTPSlot,
   } from "@/components/ui/input-otp"
+import { encryptKey } from '@/lib/utils'
   
 
 const PasskeyModal = () => {
@@ -31,7 +32,11 @@ const PasskeyModal = () => {
         e.preventDefault()
 
         if(passkey === process.env.NEXT_PUBLIC_ADMIN_PASSKEY) {
+            const encryptedKey = encryptKey(passkey);
 
+            localStorage.setItem('accessKey', encryptedKey)
+
+            setOpen(false)
         } else {
             setError('Invalid passkey. Please try again')
         }

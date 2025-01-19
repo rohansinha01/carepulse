@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 'use client'
 
 import React, { useState } from 'react'
@@ -24,6 +25,11 @@ const PasskeyModal = () => {
     const router = useRouter()
     const [open, setOpen] = useState(true)
     const [passkey, setPasskey] = useState('')
+    const [error, setError] = useState('')
+
+    const validatePasskey = (e) => {
+        
+    }
 
     const closeModal = () => {
         setOpen(false)
@@ -60,10 +66,14 @@ const PasskeyModal = () => {
         </InputOTPGroup>
         </InputOTP>
 
+        {error && <p className='shad-error text-14-regular mt-4 flex justify-center'>
+            {error}
+            </p>}
         </div>
         <AlertDialogFooter>
-            <AlertDialogCancel>Cancel</AlertDialogCancel>
-            <AlertDialogAction>Continue</AlertDialogAction>
+            <AlertDialogAction onClick={(e) => validatePasskey(e)}
+                className='shad-primary-btn w-full'
+                >Enter Admin Passkey</AlertDialogAction>
         </AlertDialogFooter>
         </AlertDialogContent>
     </AlertDialog>

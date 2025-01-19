@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 'use client'
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
     AlertDialog,
     AlertDialogAction,
@@ -27,6 +27,12 @@ const PasskeyModal = () => {
     const [open, setOpen] = useState(true)
     const [passkey, setPasskey] = useState('')
     const [error, setError] = useState('')
+
+    const encryptedKey = typeof window !== 'undefined' ? window.localStorage.getItem('accesskey') : null;
+
+    useEffect(() => {
+     
+    }, [encryptedKey])
 
     const validatePasskey = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         e.preventDefault()

@@ -27,8 +27,14 @@ const PasskeyModal = () => {
     const [passkey, setPasskey] = useState('')
     const [error, setError] = useState('')
 
-    const validatePasskey = (e) => {
-        
+    const validatePasskey = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+        e.preventDefault()
+
+        if(passkey === process.env.NEXT_PUBLIC_ADMIN_PASSKEY) {
+
+        } else {
+            setError('Invalid passkey. Please try again')
+        }
     }
 
     const closeModal = () => {

@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import PatientForm from "@/components/forms/PatientForm";
-import PasskeyModal from "@/components/PasskeyModal";
+import { PasskeyModal } from "@/components/PasskeyModal";
 
 import Image from "next/image"
 import Link from "next/link";
 
 export default function Home({ searchParams}: SearchParamProps) {
-  const isAdmin = searchParams.admin === 'true'
+  const isAdmin = searchParams?.admin === 'true'
   return (
     <span className="flex h-screen max-h-screen">
       {isAdmin && <PasskeyModal />}

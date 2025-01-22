@@ -15,6 +15,7 @@ const Admin = () => {
                     className='h-8 w-fit'
                     />
             </Link>
+            <p className='text-16-semibold'>Admin Dashboard</p>
         </header>
     </div>
   )

@@ -1,3 +1,4 @@
+import clsx from 'clsx'
 import React from 'react'
 
 interface StatCardProps {
@@ -9,7 +10,9 @@ interface StatCardProps {
 
 const StatCard = ({ count = 0, label, icon, type }: StatCardProps) => {
   return (
-    <div>StatCard</div>
+    <div className={clsx('stat-card')}>
+        test
+    </div>
   )
 }
 

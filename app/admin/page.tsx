@@ -32,6 +32,12 @@ const Admin = () => {
                     label="Scheduled appointments"
                     icon="/assets/icons/appointments.svg"
                     />
+                 <StatCard 
+                    type="pending"
+                    count={10}
+                    label="Pending appointments"
+                    icon="/assets/icons/pending.svg"
+                    />
             </section>
         </main>
     </div>

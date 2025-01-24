@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import clsx from 'clsx'
 import React from 'react'
 
@@ -10,7 +11,11 @@ interface StatCardProps {
 
 const StatCard = ({ count = 0, label, icon, type }: StatCardProps) => {
   return (
-    <div className={clsx('stat-card')}>
+    <div className={clsx('stat-card', {
+        'bg-appointments': type === 'appointments',
+        'bg-pending': type === 'pending',
+        'bg-cancelled': type === 'cancelled'
+    })}>
         test
     </div>
   )

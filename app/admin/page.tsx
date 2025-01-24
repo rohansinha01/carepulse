@@ -38,6 +38,12 @@ const Admin = () => {
                     label="Pending appointments"
                     icon="/assets/icons/pending.svg"
                     />
+                <StatCard 
+                    type="cancelled"
+                    count={2}
+                    label="Cancelled appointments"
+                    icon="/assets/icons/cancelled.svg"
+                    />
             </section>
         </main>
     </div>

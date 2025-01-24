@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import React from 'react'
-import StatCard from '@/components/StatCard'
+import { StatCard } from '@/components/StatCard'
 
 const Admin = () => {
   return (

@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import React from 'react'
+import StatCard from '@/components/StatCard'
 
 const Admin = () => {
   return (
@@ -22,6 +23,10 @@ const Admin = () => {
             <section className='w-full space-y-4'>
                 <h1 className='header'>Welcome!</h1>
                 <p className='text-dark-700'>Start the day with managing new appointments</p>
+            </section>
+
+            <section className='admin-stat'>
+                <StatCard />
             </section>
         </main>
     </div>

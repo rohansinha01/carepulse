@@ -20,6 +20,8 @@ async function getData(): Promise<Payment[]> {
   }
 
 const Admin = async () => {
+    const data = await getData()
+
     const appointments = await getRecentAppointmentList()
   return (
     <div className='mx-auto flex max-w-7xl flex-col space-y-14'>
@@ -64,8 +66,11 @@ const Admin = async () => {
             </section>
 
             <DataTable
+            // columns ={columns}
+            // data={appointments.documents} 
             columns ={columns}
-            data={appointments.documents} />
+            data={data}
+            />
         </main>
     </div>
   )

@@ -1,5 +1,7 @@
 import clsx from 'clsx'
 import React from 'react'
+import Image from 'next/image'
+import { StatusIcon } from '@/constants'
 
 const StatusBadge = ({ status}: { status: Status}) => {
   return (
@@ -7,7 +9,15 @@ const StatusBadge = ({ status}: { status: Status}) => {
         'bg-green-600': status === 'scheduled',
         'bg-blue-600': status === 'pending',
         'bg-red-600': status === 'cancelled'
-    })}>StatusBadge</div>
+    })}>
+        <Image 
+            src={StatusIcon[status]}
+            alt={status}
+            width={24}
+            height={24}
+            className='h-fit w-3'    
+                />
+    </div>
   )
 }
 

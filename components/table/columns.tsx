@@ -77,6 +77,7 @@ export const columns: ColumnDef<Payment>[] = [
   },
   {
     id: "actions",
+    header: () => <div className="pl-4">Actions</div>
     cell: ({ row }) => {
       
  

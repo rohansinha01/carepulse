@@ -54,16 +54,14 @@ export const columns: ColumnDef<Payment>[] = [
     )
   },
   {
-    accessorKey: "amount",
-    header: () => <div className="text-right">Amount</div>,
+    accessorKey: "primaryPhysician",
+    header: () => 'Doctor',
     cell: ({ row }) => {
-      const amount = parseFloat(row.getValue("amount"))
-      const formatted = new Intl.NumberFormat("en-US", {
-        style: "currency",
-        currency: "USD",
-      }).format(amount)
+      const doctor = Doctors.find((doc) => doc.name === row.original.primaryPhysician)
  
-      return <div className="text-right font-medium">{formatted}</div>
+      return <div className="flex items-center gap-3">
+        
+        </div>
     },
   },
   {

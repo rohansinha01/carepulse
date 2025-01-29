@@ -14,6 +14,8 @@ import {
 } from "@/components/ui/dropdown-menu"
 import StatusBadge from "../StatusBadge"
 import { formatDateTime } from "@/lib/utils"
+import Image from "next/image"
+import { Doctors } from "@/constants"
 
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
@@ -60,7 +62,16 @@ export const columns: ColumnDef<Payment>[] = [
       const doctor = Doctors.find((doc) => doc.name === row.original.primaryPhysician)
  
       return <div className="flex items-center gap-3">
-        
+        <Image 
+         src={doctor?.image}
+         alt={doctor.name}
+         width={100}
+         height={100}
+         className="size-8"
+        />
+        <p className="whitespace-nowrap">
+            Dr. {doctor?.name}
+        </p>
         </div>
     },
   },

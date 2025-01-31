@@ -42,7 +42,12 @@ const AppointmentModal = ({
       </DialogDescription>
     </DialogHeader>
 
-    <AppointmentForm registerId={''} patientId={''} type={'schedule'}        />
+    <AppointmentForm 
+    registerId={registerId} 
+    patientId={patientId} 
+    type={type}
+    appointment={appointment}
+            />
   </DialogContent>
 </Dialog>
 

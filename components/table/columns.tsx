@@ -84,15 +84,13 @@ export const columns: ColumnDef<Payment>[] = [
           patientId={data.patient.$id}
           registerId={data.registerId}
           appointmentId={data}
-          title="Schedule Appointment"
-          description="Please confirm the following details to schedule"/>
+          />
           <AppointmentModal 
             type="cancel"
             patientId={data.patient.$id}
             registerId={data.registerId}
             appointmentId={data}
-            title="Cancel Appointment"
-            description="Are you sure you want to cancel this appointment"/>
+            />
         </div>
       )
  

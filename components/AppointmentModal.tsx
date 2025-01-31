@@ -28,8 +28,7 @@ const AppointmentModal = ({type} : {
     <DialogHeader className='mb-4 space-y-3'>
       <DialogTitle className='capitalize'>{type} Appointment</DialogTitle>
       <DialogDescription>
-        This action cannot be undone. This will permanently delete your account
-        and remove your data from our servers.
+        Please fill in the following details to {type} an appointment.
       </DialogDescription>
     </DialogHeader>
   </DialogContent>

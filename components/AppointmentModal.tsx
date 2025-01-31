@@ -24,7 +24,7 @@ const AppointmentModal = ({type} : {
             {type}
     </Button>
   </DialogTrigger>
-  <DialogContent>
+  <DialogContent className='shad-dialog sm:max-w-md'>
     <DialogHeader>
       <DialogTitle>Are you absolutely sure?</DialogTitle>
       <DialogDescription>

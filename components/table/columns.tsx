@@ -80,6 +80,7 @@ export const columns: ColumnDef<Payment>[] = [
       return (
         <div className="flex gap-1">
           <AppointmentModal type="schedule"/>
+          <AppointmentModal type="cancel"/>
         </div>
       )
  

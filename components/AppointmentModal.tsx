@@ -26,7 +26,7 @@ const AppointmentModal = ({type} : {
   </DialogTrigger>
   <DialogContent className='shad-dialog sm:max-w-md'>
     <DialogHeader className='mb-4 space-y-3'>
-      <DialogTitle className='capitalize'>Are you absolutely sure?</DialogTitle>
+      <DialogTitle className='capitalize'>{type} Appointment</DialogTitle>
       <DialogDescription>
         This action cannot be undone. This will permanently delete your account
         and remove your data from our servers.

@@ -13,7 +13,12 @@ import {
 import { Button } from './ui/button'
 import { AppointmentForm } from './forms/AppointmentForm'
 
-const AppointmentModal = ({type} : {
+const AppointmentModal = ({
+    type,
+    patientId,
+    registerId,
+    appointment,
+} : {
     type: 'schedule' | 'cancel',
     patientId,
     registerId,

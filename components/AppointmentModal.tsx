@@ -25,7 +25,7 @@ const AppointmentModal = ({type} : {
     </Button>
   </DialogTrigger>
   <DialogContent className='shad-dialog sm:max-w-md'>
-    <DialogHeader>
+    <DialogHeader className='mb-4 space-y-3'>
       <DialogTitle>Are you absolutely sure?</DialogTitle>
       <DialogDescription>
         This action cannot be undone. This will permanently delete your account

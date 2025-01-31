@@ -10,12 +10,20 @@ import {
     DialogTrigger,
   } from "@/components/ui/dialog"
   import { useState } from 'react'
+import { Button } from './ui/button'
 
-const AppointmentModal = () => {
+const AppointmentModal = ({type} : {
+    type: 'schedule' | 'cancel'
+}) => {
     const [open, setOpen] = useState(false)
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-  <DialogTrigger>Open</DialogTrigger>
+  <DialogTrigger asChild>
+    <Button variant="ghost" className={`capitalize ${type === 'schedule' &&
+        'text-green-500'}`}>
+            {type}
+    </Button>
+  </DialogTrigger>
   <DialogContent>
     <DialogHeader>
       <DialogTitle>Are you absolutely sure?</DialogTitle>

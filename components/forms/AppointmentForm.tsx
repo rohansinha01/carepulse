@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-unused-expressions */
 /* eslint-disable @typescript-eslint/no-non-null-asserted-optional-chain */
 "use client";
@@ -30,13 +31,13 @@ export const AppointmentForm = ({
   patientId,
   type = "create",
   appointment,
-  // setOpen,
+  setOpen,
 }: {
   registerId: string;
   patientId: string;
   type: "create" | "schedule" | "cancel";
   appointment?: Appointment;
-  setOpen?: Dispatch<SetStateAction<boolean>>;
+  setOpen?: (open: boolean) => void;
 }) => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);

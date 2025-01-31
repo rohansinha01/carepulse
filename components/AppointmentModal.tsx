@@ -47,7 +47,7 @@ const AppointmentModal = ({
     patientId={patientId} 
     type={type}
     appointment={appointment}
-            />
+    setOpen={setOpen}        />
   </DialogContent>
 </Dialog>
 

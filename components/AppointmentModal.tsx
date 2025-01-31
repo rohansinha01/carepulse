@@ -12,9 +12,9 @@ import {
   import { useState } from 'react'
 
 const AppointmentModal = () => {
-    const [Open, setOpen] = useState(false)
+    const [open, setOpen] = useState(false)
   return (
-    <Dialog>
+    <Dialog open={open}>
   <DialogTrigger>Open</DialogTrigger>
   <DialogContent>
     <DialogHeader>

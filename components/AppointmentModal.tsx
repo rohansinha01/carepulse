@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react'
 import {
     Dialog,
@@ -7,8 +9,10 @@ import {
     DialogTitle,
     DialogTrigger,
   } from "@/components/ui/dialog"
+  import { useState } from 'react'
 
 const AppointmentModal = () => {
+    const [Open, setOpen] = useState(false)
   return (
     <Dialog>
   <DialogTrigger>Open</DialogTrigger>

@@ -14,7 +14,7 @@ import {
 const AppointmentModal = () => {
     const [open, setOpen] = useState(false)
   return (
-    <Dialog open={open}>
+    <Dialog open={open} onOpenChange={setOpen}>
   <DialogTrigger>Open</DialogTrigger>
   <DialogContent>
     <DialogHeader>

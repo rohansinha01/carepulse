@@ -11,6 +11,7 @@ import {
   } from "@/components/ui/dialog"
   import { useState } from 'react'
 import { Button } from './ui/button'
+import { AppointmentForm } from './forms/AppointmentForm'
 
 const AppointmentModal = ({type} : {
     type: 'schedule' | 'cancel'
@@ -31,6 +32,8 @@ const AppointmentModal = ({type} : {
         Please fill in the following details to {type} an appointment.
       </DialogDescription>
     </DialogHeader>
+
+    <AppointmentForm registerId={''} patientId={''} type={'schedule'}        />
   </DialogContent>
 </Dialog>
 

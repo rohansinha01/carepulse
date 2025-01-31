@@ -14,7 +14,10 @@ import { Button } from './ui/button'
 import { AppointmentForm } from './forms/AppointmentForm'
 
 const AppointmentModal = ({type} : {
-    type: 'schedule' | 'cancel'
+    type: 'schedule' | 'cancel',
+    patientId,
+    registerId,
+    appointment,
 }) => {
     const [open, setOpen] = useState(false)
   return (

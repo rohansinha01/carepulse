@@ -72,6 +72,7 @@ export const AppointmentForm = ({
         break;
       default:
         status = "pending";
+        break;
     }
 
     try {

@@ -24,7 +24,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import CustomFormField, { FormFieldType } from "../CustomFormField";
 import SubmitButton from "../SubmitButton";
 import { Form } from "../ui/form";
-import { createAppointment } from "@/lib/actions/appointment.actions";
+import { createAppointment, updateAppointment } from "@/lib/actions/appointment.actions";
 
 export const AppointmentForm = ({
   registerId,
@@ -108,7 +108,7 @@ export const AppointmentForm = ({
           type,
         };
 
-        const updatedAppointment = await updatedAppointment(appointmentToUpdate);
+        const updatedAppointment = await updateAppointment(appointmentToUpdate);
 
         if (updatedAppointment) {
           setOpen && setOpen(false);

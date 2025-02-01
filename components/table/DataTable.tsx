@@ -17,6 +17,7 @@ import {
   TableRow,
 } from "@/components/ui/table"
 import { Button } from "../ui/button"
+import Image from "next/image"
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]
@@ -87,7 +88,12 @@ export function DataTable<TData, TValue>({
           disabled={!table.getCanPreviousPage()}
           className="shad-gray-btn"
         >
-          Previous
+          <Image 
+           src="/assets/icons/arrow.svg"
+           width={24}
+           height={24}
+           alt="arrow"
+           />
         </Button>
         <Button
           variant="outline"

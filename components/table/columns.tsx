@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-asserted-optional-chain */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 "use client"
 
@@ -51,10 +52,11 @@ export const columns: ColumnDef<Appointment>[] = [
     cell: ({ row }) => {
       const doctor = Doctors.find((doc) => doc.name === row.original.primaryPhysician)
  
-      return <div className="flex items-center gap-3">
+      return (
+        <div className="flex items-center gap-3">
         <Image 
-         src={doctor?.image}
-         alt={doctor.name}
+         src={doctor?.image!}
+         alt="doctor"
          width={100}
          height={100}
          className="size-8"
@@ -63,7 +65,7 @@ export const columns: ColumnDef<Appointment>[] = [
             Dr. {doctor?.name}
         </p>
         </div>
-    },
+    )},
   },
   {
     id: "actions",

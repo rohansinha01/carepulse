@@ -100,8 +100,15 @@ export function DataTable<TData, TValue>({
           size="sm"
           onClick={() => table.nextPage()}
           disabled={!table.getCanNextPage()}
+          className="shad-gray-btn"
         >
-          Next
+          <Image 
+           src="/assets/icons/arrow.svg"
+           width={24}
+           height={24}
+           alt="arrow"
+           className="rotate-180"
+           />
         </Button>
       </div>
     </div>

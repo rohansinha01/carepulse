@@ -116,7 +116,7 @@ export const getRecentAppointmentList = async () => {
 };
 
 //  SEND SMS NOTIFICATION
-export const sendSMSNotification = async (userId: string, content: string) => {
+export const sendSMSNotification = async (registerId: string, content: string) => {
   try {
     // https://appwrite.io/docs/references/1.5.x/server-nodejs/messaging#createSms
     const message = await messaging.createSms(

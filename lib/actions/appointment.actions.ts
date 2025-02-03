@@ -153,7 +153,7 @@ export const updateAppointment = async ({
     Hi, it's CarePulse. 
     ${type === 'schedule' 
       ? `Your appointment has been scheduled for ${formatDateTime(appointment
-      .schedule!).dateTime}`
+      .schedule!).dateTime} with Dr. ${appointment.primaryPhysician}`
       : `We regret to inform you that your appointment has been cancelled. Reason: ${appointment.cancellationReason}`}
     `
     await sendSMSNotification(registerId, smsMessage)

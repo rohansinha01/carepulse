@@ -123,7 +123,7 @@ export const sendSMSNotification = async (registerId: string, content: string) =
       ID.unique(),
       content,
       [],
-      [userId]
+      [registerId]
     );
     return parseStringify(message);
   } catch (error) {

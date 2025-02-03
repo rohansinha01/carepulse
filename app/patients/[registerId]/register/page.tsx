@@ -13,7 +13,7 @@ const Register = async (props: SearchParamProps) => {
   } = params;
 
   const user = await getUser(registerId);
-  Sentry.metrics.set("user_view", "jane")
+  Sentry.metrics.set("user_view", user.name)
 
   return (
     <div className="flex h-screen max-h-screen">

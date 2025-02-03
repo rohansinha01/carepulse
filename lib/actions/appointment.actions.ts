@@ -156,6 +156,7 @@ export const updateAppointment = async ({
       .schedule!)}`
       : `We regret to inform you that your appointment has been cancelled. Reason: ${appointment.cancellationReason}`}
     `
+    await sendSMSNotification(registerId, smsMessage)
 
     revalidatePath("/admin");
     return parseStringify(updatedAppointment);

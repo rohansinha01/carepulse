@@ -17,7 +17,7 @@ const Success = async ({ params: { registerId}, searchParams}: SearchParamProps)
     const doctor = Doctors.find((doc) => doc.name === appointment.primaryPhysician)
     const user = await getUser(registerId);
 
-     Sentry.metrics.set("user_view", user.name)
+     Sentry.metrics.set("user_view_appointment-success", user.name)
   return (
     <div className='flex h-screen max-h-screen px-[5%]'>
         <div className='success-img'>

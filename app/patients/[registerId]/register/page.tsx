@@ -3,6 +3,8 @@ import React from 'react'
 import RegisterForm from "@/components/forms/RegisterForm";
 import { getUser } from "@/lib/actions/patient.actions";
 
+import * as Sentry from '@sentry/nextjs'
+
 const Register = async (props: SearchParamProps) => {
   const params = await props.params;
 
@@ -11,6 +13,7 @@ const Register = async (props: SearchParamProps) => {
   } = params;
 
   const user = await getUser(registerId);
+  Sentry.metrics.set("user_view", "jane")
 
   return (
     <div className="flex h-screen max-h-screen">

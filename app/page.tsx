@@ -26,7 +26,7 @@ export default function Home({ searchParams}: SearchParamProps) {
             © 2025 CarePulse
             </p>
             <Link href="/?admin=true" className="text-green-500">
-            Admins Click Here
+            Admin
           
             </Link>
           </div>

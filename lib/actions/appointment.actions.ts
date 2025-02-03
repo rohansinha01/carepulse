@@ -149,7 +149,13 @@ export const updateAppointment = async ({
 
     if (!updatedAppointment) throw Error;
 
-    const smsMessage = `Hi, it's CarePulse. Your appointment has been ${type}.`
+    const smsMessage = `
+    Hi, it's CarePulse. 
+    ${type === 'schedule' 
+      ? `Your appointment has been scheduled for ${formatDateTime(appointment
+      .schedule!)}`
+      : `We regret to inform you that your appointment has been cancelled. Reason: ${appointment.cancellationReason}`}
+    `
 
     revalidatePath("/admin");
     return parseStringify(updatedAppointment);

@@ -149,7 +149,7 @@ export const updateAppointment = async ({
 
     if (!updatedAppointment) throw Error;
 
-
+    const smsMessage = `Hi, it's CarePulse. Your appointment has been ${type}.`
 
     revalidatePath("/admin");
     return parseStringify(updatedAppointment);

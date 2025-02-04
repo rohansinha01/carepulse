@@ -100,6 +100,7 @@ export const AppointmentForm = ({
         const appointmentToUpdate = {
           registerId,
           appointmentId: appointment?.$id!,
+          timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
           appointment: {
             primaryPhysician: values.primaryPhysician,
             schedule: new Date(values.schedule),

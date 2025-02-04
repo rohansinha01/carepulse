@@ -7,8 +7,8 @@ import Image from "next/image"
 import Link from "next/link";
 import React from "react"
 
-export const Home = async ({ searchParams }: SearchParamProps) => {
-  const isAdmin = (await searchParams)?.admin === "true";
+export default function Home({ searchParams}: SearchParamProps) {
+  const isAdmin = searchParams?.admin === 'true'
   return (
     <span className="flex h-screen max-h-screen">
       {isAdmin && <PasskeyModal />}

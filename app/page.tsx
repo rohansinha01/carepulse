@@ -1,14 +1,9 @@
-import { NextPage } from "next";
 import PatientForm from "@/components/forms/PatientForm";
 import { PasskeyModal } from "@/components/PasskeyModal";
 import Image from "next/image";
 import Link from "next/link";
 
-interface HomeProps {
-  searchParams?: { admin?: string };
-}
-
-const Home: NextPage<HomeProps> = ({ searchParams }) => {
+export default function Home({ searchParams }: { searchParams?: { admin?: string } }) {
   const isAdmin = searchParams?.admin === "true";
 
   return (
@@ -45,6 +40,4 @@ const Home: NextPage<HomeProps> = ({ searchParams }) => {
       />
     </span>
   );
-};
-
-export default Home;
+}

@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable no-unused-vars */
 
-declare type SearchParamProps = {
-  params: Promise<{ [key: string]: string }>;
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+type PageProps = {
+  searchParams?: { [key: string]: string | undefined };
 };
+
   
   declare type Gender = "Male" | "Female" | "Other";
   declare type Status = "pending" | "scheduled" | "cancelled";

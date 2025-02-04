@@ -3,7 +3,11 @@ import { PasskeyModal } from "@/components/PasskeyModal";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function Home({ searchParams }: { searchParams?: { admin?: string } }) {
+interface PageProps {
+  searchParams?: { admin?: string };
+}
+
+export default function Home({ searchParams }: PageProps) {
   const isAdmin = searchParams?.admin === "true";
 
   return (

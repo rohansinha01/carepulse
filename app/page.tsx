@@ -1,11 +1,15 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import PatientForm from "@/components/forms/PatientForm";
 import { PasskeyModal } from "@/components/PasskeyModal";
 
 import Image from "next/image"
 import Link from "next/link";
+import React from "react"
 
-export default async function Home({ searchParams }: {searchParams: Promise<{isAdmin: string}>}) {
+export default async function Home({ searchParams }: {searchParams: Promise<{
+  isAdmin: string;SearchParamProps: any
+}>}) {
   const isAdmin = (await searchParams)?.isAdmin === 'true'
   return (
     <span className="flex h-screen max-h-screen">

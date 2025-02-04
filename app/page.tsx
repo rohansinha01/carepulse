@@ -5,7 +5,8 @@ import { PasskeyModal } from "@/components/PasskeyModal";
 import Image from "next/image"
 import Link from "next/link";
 
-export default function Home({ searchParams}: SearchParamProps) {
+export default async function Home(props: SearchParamProps) {
+  const searchParams = await props.searchParams;
   const isAdmin = searchParams?.admin === 'true'
   return (
     <span className="flex h-screen max-h-screen">
@@ -41,7 +42,6 @@ export default function Home({ searchParams}: SearchParamProps) {
       />
       </span>
   );
-  
 }
 
 

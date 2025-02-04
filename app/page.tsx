@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -9,10 +10,24 @@ declare type SearchParamProps = {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 };
 
+const Home = (props: SearchParamProps) => {
+  const [searchParams, setSearchParams] = useState<{ [key: string]: string | string[] | undefined } | null>(null);
+  const [isAdmin, setIsAdmin] = useState(false);
 
-const Home = async (props: SearchParamProps) => {
-  const searchParams = await props.searchParams;
-  const isAdmin = await searchParams?.admin === "true";
+  useEffect(() => {
+    // Resolve the promise when the component mounts
+    const resolveSearchParams = async () => {
+      const params = await props.searchParams;
+      setSearchParams(params);
+      setIsAdmin(params?.admin === "true");
+    };
+
+    resolveSearchParams();
+  }, [props.searchParams]);
+
+  if (searchParams === null) {
+    return <div>Loading...</div>; // Optionally handle loading state
+  }
 
   return (
     <div className="flex h-screen max-h-screen">

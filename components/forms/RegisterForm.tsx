@@ -25,6 +25,7 @@ import "react-phone-number-input/style.css";
 import CustomFormField, { FormFieldType } from "../CustomFormField";
 import { FileUploader } from "../FileUploader";
 import SubmitButton from "../SubmitButton";
+import { User } from "@sentry/nextjs";
 
 const RegisterForm = ({ user }: { user: User }) => {
   const router = useRouter();

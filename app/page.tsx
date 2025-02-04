@@ -6,7 +6,7 @@ import { PasskeyModal } from "@/components/PasskeyModal";
 
 const Home = async (props: SearchParamProps) => {
   const searchParams = await props.searchParams;
-  const isAdmin = searchParams?.admin === "true";
+  const isAdmin = await searchParams?.admin === "true";
 
   return (
     <div className="flex h-screen max-h-screen">

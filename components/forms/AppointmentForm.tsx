@@ -25,6 +25,7 @@ import CustomFormField, { FormFieldType } from "../CustomFormField";
 import SubmitButton from "../SubmitButton";
 import { Form } from "../ui/form";
 import { createAppointment, updateAppointment } from "@/lib/actions/appointment.actions";
+import { Status } from "@/types";
 
 export const AppointmentForm = ({
   registerId,

@@ -5,8 +5,8 @@ import { PasskeyModal } from "@/components/PasskeyModal";
 import Image from "next/image"
 import Link from "next/link";
 
-export default async function Home({ searchParams}: SearchParamProps) {
-  const isAdmin = await searchParams?.admin === 'true'
+export default async function Home({ searchParams }: {searchParams: Promise<{isAdmin: string}>}) {
+  const isAdmin = (await searchParams)?.isAdmin === 'true'
   return (
     <span className="flex h-screen max-h-screen">
       {isAdmin && <PasskeyModal />}

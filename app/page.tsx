@@ -4,9 +4,11 @@ import Link from "next/link";
 import PatientForm from "@/components/forms/PatientForm";
 import { PasskeyModal } from "@/components/PasskeyModal";
 
-const Home = async (props: SearchParamProps) => {
-  const searchParams = await props.searchParams(); // Call function and await
+const Home = (props: SearchParamProps) => {
+  const searchParams = props.searchParams; // No await needed
   const isAdmin = searchParams?.admin === "true";
+  console.log("searchParams:", props.searchParams);
+
   return (
     <div className="flex h-screen max-h-screen">
       {isAdmin && <PasskeyModal />}

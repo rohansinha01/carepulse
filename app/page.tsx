@@ -1,36 +1,12 @@
-'use client'
-
-import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
 import PatientForm from "@/components/forms/PatientForm";
 import { PasskeyModal } from "@/components/PasskeyModal";
 
-declare type SearchParamProps = {
-  params: { [key: string]: string };
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
-};
-
-const Home = (props: SearchParamProps) => {
-  const [searchParams, setSearchParams] = useState<{ [key: string]: string | string[] | undefined } | null>(null);
-  const [isAdmin, setIsAdmin] = useState(false);
-
-  useEffect(() => {
-    // Resolve the promise when the component mounts
-    const resolveSearchParams = async () => {
-      const params = await props.searchParams;
-      setSearchParams(params);
-      setIsAdmin(params?.admin === "true");
-    };
-
-    resolveSearchParams();
-  }, [props.searchParams]);
-
-  if (searchParams === null) {
-    return <div>Loading...</div>; // Optionally handle loading state
-  }
-
+const Home = async (props: SearchParamProps) => {
+  const searchParams = await props.searchParams(); // Call function and await
+  const isAdmin = searchParams?.admin === "true";
   return (
     <div className="flex h-screen max-h-screen">
       {isAdmin && <PasskeyModal />}

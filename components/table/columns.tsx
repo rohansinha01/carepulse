@@ -42,7 +42,7 @@ export const columns: ColumnDef<Appointment>[] = [
     header: "Appointment",
     cell: ({ row }) => (
       <p className="text-14-regular min-w-[100px]">
-        {formatDateTime(row.original.schedule).dateTime}
+        {formatDateTime(row.original.schedule, row.original.timeZone).dateTime}
       </p>
     )
   },

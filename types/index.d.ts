@@ -2,7 +2,7 @@
 /* eslint-disable no-unused-vars */
 
 declare type SearchParamProps = {
-    params: Promise<{ [key: string]: any }>;
+    params: Promise<{ isAdmin: string[] }>;
     searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
   };
   

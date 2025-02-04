@@ -4,6 +4,7 @@ import RegisterForm from "@/components/forms/RegisterForm";
 import { getUser } from "@/lib/actions/patient.actions";
 
 import * as Sentry from '@sentry/nextjs'
+import { SearchParamProps } from "@/types";
 
 const Register = async (props: SearchParamProps) => {
   const params = await props.params;

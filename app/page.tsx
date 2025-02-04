@@ -5,19 +5,10 @@ import { PasskeyModal } from "@/components/PasskeyModal";
 
 import Image from "next/image"
 import Link from "next/link";
+import React from "react"
 
-import React, { useEffect, useState } from "react";
-
-export default function Home({ searchParams }: { searchParams: Promise<{ admin?: string }> }) {
-  const [params, setParams] = useState<{ admin?: string }>({});
-
-  useEffect(() => {
-    searchParams.then(resolvedParams => {
-      setParams(resolvedParams);
-    });
-  }, [searchParams]);
-
-  const isAdmin = params?.admin === 'true';
+export default async function Home({ searchParams }: { searchParams: { admin?: string } }) {
+  const isAdmin = searchParams?.admin === 'true';
   return (
     <span className="flex h-screen max-h-screen">
       {isAdmin && <PasskeyModal />}

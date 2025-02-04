@@ -8,7 +8,7 @@ import Link from "next/link";
 import React from "react"
 
 export default async function Home({ searchParams }: {searchParams: Promise<{
-  isAdmin: string;SearchParamProps: any
+  isAdmin: any;SearchParamProps: any
 }>}) {
   const isAdmin = (await searchParams)?.isAdmin === 'true'
   return (

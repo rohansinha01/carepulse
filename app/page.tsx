@@ -29,7 +29,7 @@ const Home = async (props: SearchParamProps) => {
               © 2025 CarePluse
             </p>
             <Link href="/?admin=true" className="text-green-500">
-              Admin
+              Admin Log In
             </Link>
           </div>
         </div>

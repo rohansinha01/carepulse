@@ -3,7 +3,7 @@
 
 declare type SearchParamProps = {
   params: Promise<{ [key: string]: string }>;
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+  searchParams: Promise<{admin?: string;}>;
 };
   
   declare type Gender = "Male" | "Female" | "Other";

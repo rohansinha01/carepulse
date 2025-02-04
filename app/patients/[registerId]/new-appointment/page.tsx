@@ -6,6 +6,7 @@ import { getPatient } from "@/lib/actions/patient.actions";
 import Image from "next/image"
 // import Link from "next/link";
 import * as Sentry from '@sentry/nextjs'
+import { SearchParamProps } from "@/types";
 
 
 const Appointment = async (props: SearchParamProps) => {

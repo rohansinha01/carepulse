@@ -136,6 +136,7 @@ export const sendSMSNotification = async (registerId: string, content: string) =
 export const updateAppointment = async ({
   appointmentId,
   registerId,
+  timeZone,
   appointment,
   type,
 }: UpdateAppointmentParams) => {
@@ -154,7 +155,7 @@ export const updateAppointment = async ({
     Hi, it's CarePulse. 
     ${type === 'schedule' 
       ? `Your appointment has been scheduled for ${formatDateTime(appointment
-      .schedule!).dateTime} with Dr. ${appointment.primaryPhysician}`
+      .schedule!, timeZone).dateTime} with Dr. ${appointment.primaryPhysician}`
       : `We regret to inform you that your appointment has been cancelled. Reason: ${appointment.cancellationReason}`}
     `
     await sendSMSNotification(registerId, smsMessage)

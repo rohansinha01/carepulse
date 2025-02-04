@@ -5,7 +5,7 @@ import Image from "next/image";
 import ReactDatePicker from "react-datepicker";
 import { Control } from "react-hook-form";
 import PhoneInput from "react-phone-number-input";
-
+import 'react-phone-number-input/style.css'
 import { Checkbox } from "./ui/checkbox";
 import {
   FormControl,
@@ -90,6 +90,7 @@ const RenderInput = ({ field, props }: { field: any; props: CustomProps }) => {
             value={field.value as E164Number | undefined}
             onChange={field.onChange}
             className="input-phone"
+        
           />
         </FormControl>
       );

@@ -9,6 +9,7 @@ import Link from 'next/link'
 import React from 'react'
 import * as Sentry from '@sentry/nextjs'
 import { getUser } from '@/lib/actions/patient.actions';
+import { SearchParamProps } from '@/types';
 
 const Success = async (props: SearchParamProps) => {
     const searchParams = await props.searchParams;

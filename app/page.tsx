@@ -7,6 +7,10 @@ import Image from "next/image"
 import Link from "next/link";
 import React from "react"
 
+interface SearchParams {
+  admin?: string;
+}
+
 export default function Home({ searchParams }: { searchParams: { admin?: string } }) {
   const isAdmin = searchParams?.admin === 'true';
   return (

@@ -7,6 +7,16 @@ import Image from "next/image"
 import Link from "next/link";
 import React from "react"
 
+export type SearchParamProps = {
+
+  searchParams: {
+
+    admin?: string;
+
+  };
+
+};
+
 export default async function Home({ searchParams }: SearchParamProps) {
   const params = await searchParams;
   const isAdmin = params?.admin === 'true';

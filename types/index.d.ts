@@ -4,7 +4,6 @@
 declare type SearchParamProps = {
   params: Promise<{ [key: string]: string }>;
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
-  isAdmin: Promise<{ [key: string]: string}>;
 };
   
   declare type Gender = "Male" | "Female" | "Other";

@@ -7,14 +7,8 @@ import Image from "next/image"
 import Link from "next/link";
 import React from "react"
 
-export type SearchParamProps = {
-  searchParams: Promise<{
-    admin?: string;
-  }>;
-};
-
 export default async function Home({ searchParams }: { searchParams: any }) {
-  const params = searchParams;
+  const params = await searchParams;
   const isAdmin = await params?.admin === 'true';
   return (
     <span className="flex h-screen max-h-screen">

@@ -4,7 +4,8 @@ import Link from "next/link";
 import PatientForm from "@/components/forms/PatientForm";
 import { PasskeyModal } from "@/components/PasskeyModal";
 
-const Home = async ({ searchParams }: SearchParamProps) => {
+const Home = async (props: SearchParamProps) => {
+  const searchParams = await props.searchParams;
   const isAdmin = searchParams?.admin === "true";
 
   return (
@@ -28,7 +29,7 @@ const Home = async ({ searchParams }: SearchParamProps) => {
               © 2025 CarePluse
             </p>
             <Link href="/?admin=true" className="text-green-500">
-              Admin Log In
+              Admin
             </Link>
           </div>
         </div>

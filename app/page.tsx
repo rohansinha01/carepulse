@@ -3,9 +3,16 @@ import Link from "next/link";
 
 import PatientForm from "@/components/forms/PatientForm";
 import { PasskeyModal } from "@/components/PasskeyModal";
+import { SearchParamProps } from "@/types";
+
 
 const Home = async (props: SearchParamProps) => {
-  const searchParams = await props.searchParams; // No await needed
+  const params = await props.params;
+  const searchParams = await props.searchParams;
+
+  console.log("params:", params);
+  console.log("searchParams:", searchParams);
+
   const isAdmin = searchParams?.admin === "true";
 
   return (

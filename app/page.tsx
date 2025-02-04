@@ -7,12 +7,12 @@ import Image from "next/image"
 import Link from "next/link";
 import React from "react"
 
-interface SearchParams {
-  admin?: string;
+interface PageProps {
+  searchParams: { admin?: string };
 }
 
-export default function Home({ searchParams }: { searchParams: { admin?: string } }) {
-  const isAdmin = searchParams?.admin === 'true';
+export default function Home({ searchParams }: PageProps) {
+  const isAdmin = searchParams?.admin === "true";
   return (
     <span className="flex h-screen max-h-screen">
       {isAdmin && <PasskeyModal />}

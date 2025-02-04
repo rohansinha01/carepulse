@@ -13,9 +13,9 @@ export type SearchParamProps = {
   }>;
 };
 
-export default function Home({ searchParams }: { searchParams: any }) {
+export default async function Home({ searchParams }: { searchParams: any }) {
   const params = searchParams;
-  const isAdmin = params?.admin === 'true';
+  const isAdmin = await params?.admin === 'true';
   return (
     <span className="flex h-screen max-h-screen">
       {isAdmin && <PasskeyModal />}

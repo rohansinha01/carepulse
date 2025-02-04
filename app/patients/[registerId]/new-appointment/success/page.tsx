@@ -71,7 +71,7 @@ const Success = async (props: SearchParamProps) => {
                           width={24}
                           alt="calendar"
                       />
-                      <p>{formatDateTime(appointment.schedule).dateTime}</p>
+                      <p>{formatDateTime(appointment.schedule, appointment.timeZone).dateTime}</p>
                   </div>
               </section>
               
